@@ -1,0 +1,8 @@
+{
+  "checks": [
+    {
+      "name": "Example Check",
+      "command": "echo 'Running check...'"
+    }
+  ]
+}
