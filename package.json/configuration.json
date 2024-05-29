@@ -1,13 +1,12 @@
 {
-    "name": "speed-money-transfer",
-    "version": "1.0.0",
-    "description": "Speed Money Transfer Website",
-    "main": "server.js",
-    "scripts": {
+  "name": "speed-money-transfer",
+  "version": "1.0.0",
+  "description": "Speed Money Transfer Website",
+  "main": "server.js",
+  "scripts": {
       "start": "node server.js"
-    },
-    "dependencies": {
+  },
+  "dependencies": {
       "express": "^4.17.1"
-    }
   }
-  
+}

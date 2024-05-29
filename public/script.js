@@ -1,31 +1,22 @@
-// Example script.js following Betty Style
-
-// Constants in SCREAMING_SNAKE_CASE
-const API_URL = 'https://api.example.com/';
-
-// Function declaration using function keyword
-function handleFormSubmission(event) {
+$('#transaction-form').submit(function(event) {
     event.preventDefault(); // Prevent form submission
 
-    const amount = $('#amount').val(); // Using camelCase for variables
+    const amount = $('#amount').val();
     const fromCurrency = $('#from-currency').val();
     const toCurrency = $('#to-currency').val();
 
-    // Call API endpoint using fetch (alternative to $.ajax)
-    fetch(`${API_URL}exchange`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
+    // Call Binance API to perform currency exchange
+    $.ajax({
+        url: 'https://api.binance.com/api/v3/ticker/price',
+        method: 'GET',
+        data: { symbol: fromCurrency + toCurrency },
+        success: function(response) {
+            const exchangeRate = parseFloat(response.price);
+            const convertedAmount = amount * exchangeRate;
+            alert(`Exchange successful! You will receive ${convertedAmount} ${toCurrency}`);
         },
-        body: JSON.stringify({ amount, fromCurrency, toCurrency })
-    })
-    .then(response => response.json())
-    .then(data => {
-        const convertedAmount = data.convertedAmount;
-        alert(`Exchange successful! You will receive ${convertedAmount} ${toCurrency}`);
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('An error occurred during exchange.');
+        error: function(xhr, status, error) {
+            alert('Error: ' + error);
+        }
     });
-}
+});
