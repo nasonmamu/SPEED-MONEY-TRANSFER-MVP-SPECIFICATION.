@@ -1,0 +1,17 @@
+{
+  "name": "speed-money-transfer-mvp-specification.",
+  "version": "1.0.0",
+  "description": "This project simplifies money transfer expeditions between different mobile transfer mediums",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "speed",
+    "money",
+    "transfer"
+  ],
+  "author": "Nason Mamu",
+  "license": "MIT"
+}
