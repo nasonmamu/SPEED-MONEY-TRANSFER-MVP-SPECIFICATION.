@@ -1,18 +1,18 @@
-// Function to handle form submission for transaction
 $('#transaction-form').submit(function(event) {
     event.preventDefault(); // Prevent form submission
+
     const amount = $('#amount').val();
-    const from currency = $('#from-currency').val();
+    const fromCurrency = $('#from-currency').val();
     const toCurrency = $('#to-currency').val();
 
     // Call Binance API to perform currency exchange
     $.ajax({
         url: 'https://api.binance.com/api/v3/ticker/price',
         method: 'GET',
-        data: { symbol: from currency + toCurrency },
+        data: { symbol: fromCurrency + toCurrency },
         success: function(response) {
-            const exchange rate = parseFloat(response.price);
-            const converted amount = amount * exchange rate;
+            const exchangeRate = parseFloat(response.price);
+            const convertedAmount = amount * exchangeRate;
             alert(`Exchange successful! You will receive ${convertedAmount} ${toCurrency}`);
         },
         error: function(xhr, status, error) {
