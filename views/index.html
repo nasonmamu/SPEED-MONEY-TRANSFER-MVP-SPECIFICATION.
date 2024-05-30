@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Speed Money Transfer - Dashboard</title>
+   <link rel="stylesheet" href="style.css">
+   <style>
+       /* Additional styles for the dashboard layout */
+       .dashboard-container {
+           display: flex;
+           max-width: 1200px;
+           margin: 0 auto;
+           background-color: #fff;
+           box-shadow: 0 0 10px rgba(75, 13, 13, 0.1);
+       }
+
+       .sidebar {
+           width: 250px;
+           padding: 20px;
+           background-color: #333;
+           color: #fff;
+       }
+
+       .sidebar h2 {
+           font-size: 1.5em;
+           margin-bottom: 20px;
+       }
+
+       .sidebar ul {
+           list-style-type: none;
+           padding: 0;
+       }
+
+       .sidebar ul li {
+           margin-bottom: 10px;
+       }
+
+       .sidebar ul li a {
+           color: #fff;
+           text-decoration: none;
+           display: block;
+           padding: 10px;
+           border-radius: 5px;
+       }
+
+       .sidebar ul li a:hover,
+       .sidebar ul li a.active {
+           background-color: #555;
+       }
+
+       .main-content {
+           flex: 1;
+           padding: 20px;
+       }
+
+       .main-content header {
+           margin-bottom: 20px;
+       }
+
+       .tab-content {
+           display: none;
+       }
+
+       .tab-content.active {
+           display: block;
+       }
+
+       .tab-content h2 {
+           font-size: 2em;
+           margin-bottom: 10px;
+           color: #333;
+       }
+
+       .tab-content p {
+           font-size: 1.2em;
+           color: #555;
+       }
+   </style>
+</head>
+<body>
+   <nav>
+       <ul>
+           <li><a href="index.html">Home</a></li>
+           <li><a href="login.html">Login</a></li>
+           <li><a href="profile.html">Profile</a></li>
+       </ul>
+   </nav>
+   <div class="dashboard-container">
+       <aside class="sidebar">
+           <h2>Dashboard Menu</h2>
+           <ul>
+               <li><a href="#home" class="active">Home</a></li>
+               <li><a href="#profile">Profile</a></li>
+               <li><a href="#settings">Settings</a></li>
+               <li><a href="#reports">Reports</a></li>
+               <li><a href="#">Logout</a></li>
+           </ul>
+       </aside>
+       
+       <main class="main-content">
+           <header>
+               <h1>Welcome to Speed Money Transfer</h1>
+               <img src="image/logo.png" alt="Logo">
+           </header>
+           
+           <section id="home" class="tab-content active">
+               <h2>Dashboard Home</h2>
+               <div>
+                   <!-- Content for the dashboard home -->
+                   <form id="transaction-form">
+                       <label for="amount">Amount:</label>
+                       <input type="number" id="amount" name="amount" required>
+                       <label for="from-currency">From Currency:</label>
+                       <select id="from-currency" name="from-currency" required>
+                           <option value="BTC">Bitcoin (BTC)</option>
+                           <option value="ETH">Ethereum (ETH)</option>
+                           <!-- Add more currency options here -->
+                       </select>
+                       <label for="to-currency">To Currency:</label>
+                       <select id="to-currency" name="to-currency" required>
+                           <option value="USDT">Tether (USDT)</option>
+                           <!-- Add more currency options here -->
+                       </select>
+                       <button type="submit">Exchange</button>
+                   </form>
+               </div>
+           </section>
+           
+           <section id="profile" class="tab-content">
+               <h2>User Profile</h2>
+               <div>
+                   <!-- Content for the user profile -->
+                   <p>Update user profile information here.</p>
+               </div>
+           </section>
+           
+           <section id="settings" class="tab-content">
+               <h2>Settings</h2>
+               <div>
+                   <!-- Content for the settings -->
+                   <p>Manage account settings and preferences here.</p>
+               </div>
+           </section>
+           
+           <section id="reports" class="tab-content">
+               <h2>Reports</h2>
+               <div>
+                   <!-- Content for the reports -->
+                   <p>View and analyze transaction reports.</p>
+               </div>
+           </section>
+       </main>
+   </div>
+
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <script src="script.js"></script>
+   <script>
+       document.addEventListener("DOMContentLoaded", function() {
+           const tabs = document.querySelectorAll('.sidebar ul li a');
+
+           tabs.forEach(tab => {
+               tab.addEventListener('click', function(e) {
+                   e.preventDefault();
+
+                   // Remove 'active' class from all tabs
+                   tabs.forEach(tab => {
+                       tab.classList.remove('active');
+                   });
+
+                   // Add 'active' class to the clicked tab
+                   this.classList.add('active');
+
+                   // Hide all tab contents
+                   const tabContents = document.querySelectorAll('.tab-content');
+                   tabContents.forEach(content => {
+                       content.classList.remove('active');
+                   });
+
+                   // Show the corresponding tab content
+                   const target = this.getAttribute('href').substring(1);
+                   const targetContent = document.getElementById(target);
+                   if (targetContent) {
+                       targetContent.classList.add('active');
+                   }
+               });
+           });
+       });
+   </script>
+</body>
+</html>
