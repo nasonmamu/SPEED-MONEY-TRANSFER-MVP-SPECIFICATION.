@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/public/style.css">
+  <title>Transaction - Speed Money Transfer</title>
+</head>
+<body>
+  <h2>Create Transaction</h2>
+  <form id="transactionForm" enctype="multipart/form-data">
+    <label for="receiver">Receiver:</label>
+    <input type="text" id="receiver" name="receiver" required>
+    <br>
+    <label for="amount">Amount:</label>
+    <input type="number" id="amount" name="amount" required>
+    <br>
+    <label for="receipt">Receipt:</label>
+    <input type="file" id="receipt" name="receipt">
+    <br>
+    <button type="submit">Create Transaction</button>
+  </form>
+  <script>
+    document.getElementById('transactionForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData();
+      formData.append('receiver', document.getElementById('receiver').value);
+      formData.append('amount', document.getElementById('amount').value);
+      const receipt = document.getElementById('receipt').files[0];
+      if (receipt) {
+        formData.append('receipt', receipt);
+      }
+
+      try {
+        const response = await fetch('/api/transactions/transaction', {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
+        });
+
+        const data = await response.json();
+        if (response.ok) {
+          alert('Transaction created successfully!');
+        } else {
+          alert(`Transaction failed: ${data.error}`);
+        }
+      } catch (error) {
+        console.error('Error during transaction creation:', error);
+        alert('An error occurred during transaction creation.');
+      }
+    });
+  </script>
+</body>
+</html>
