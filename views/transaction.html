@@ -7,50 +7,48 @@
   <title>Transaction - Speed Money Transfer</title>
 </head>
 <body>
-  <h2>Create Transaction</h2>
-  <form id="transactionForm" enctype="multipart/form-data">
-    <label for="receiver">Receiver:</label>
-    <input type="text" id="receiver" name="receiver" required>
-    <br>
-    <label for="amount">Amount:</label>
-    <input type="number" id="amount" name="amount" required>
-    <br>
-    <label for="receipt">Receipt:</label>
-    <input type="file" id="receipt" name="receipt">
-    <br>
-    <button type="submit">Create Transaction</button>
-  </form>
-  <script>
-    document.getElementById('transactionForm').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const formData = new FormData();
-      formData.append('receiver', document.getElementById('receiver').value);
-      formData.append('amount', document.getElementById('amount').value);
-      const receipt = document.getElementById('receipt').files[0];
-      if (receipt) {
-        formData.append('receipt', receipt);
-      }
+  <!-- Header Section -->
+  <header>
+    <!-- Add header content, navigation, etc. -->
+  </header>
 
-      try {
-        const response = await fetch('/api/transactions/transaction', {
-          method: 'POST',
-          body: formData,
-          headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`
-          }
-        });
+  <!-- Main Content Section -->
+  <main class="dashboard-container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h2>Dashboard</h2>
+      <ul>
+        <li><a href="/dashboard.html">Home</a></li>
+        <li><a href="/profile.html">Profile</a></li>
+        <li><a href="/transaction.html" class="active">Create Transaction</a></li>
+        <!-- Add more sidebar links as needed -->
+      </ul>
+    </div>
 
-        const data = await response.json();
-        if (response.ok) {
-          alert('Transaction created successfully!');
-        } else {
-          alert(`Transaction failed: ${data.error}`);
-        }
-      } catch (error) {
-        console.error('Error during transaction creation:', error);
-        alert('An error occurred during transaction creation.');
-      }
-    });
-  </script>
+    <!-- Main Content Area -->
+    <div class="main-content">
+      <h2>Create Transaction</h2>
+      <form id="transactionForm" enctype="multipart/form-data">
+        <label for="receiver">Receiver:</label>
+        <input type="text" id="receiver" name="receiver" required>
+        <br>
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" name="amount" required>
+        <br>
+        <label for="receipt">Receipt:</label>
+        <input type="file" id="receipt" name="receipt">
+        <br>
+        <button type="submit">Create Transaction</button>
+      </form>
+    </div>
+  </main>
+
+  <!-- Footer Section -->
+  <footer>
+    <!-- Add footer content -->
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="/public/script/transaction.js"></script>
 </body>
 </html>
