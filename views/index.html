@@ -7,61 +7,7 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="#intro">Home</a></li>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#presentation">Presentation</a></li>
-        <li><a href="#uploads">Upload</a></li>
-        <li><a href="#blog">Blog</a></li>
-        <li><a href="login.html">Login</a></li>
-        <li><a href="profile.html">Profile</a></li>
-      </ul>
-    </nav>
-  </header>
-  
-  <!-- Existing Sections -->
-  <section id="intro" class="intro-section">
-    <!-- Intro Section Content -->
-  </section>
-
-  <section id="features" class="feature-section">
-    <!-- Features Section Content -->
-  </section>
-
-  <section id="about" class="about-section">
-    <!-- About Section Content -->
-  </section>
-
-  <section id="presentation" class="presentation-section">
-    <!-- Presentation Section Content -->
-  </section>
-
-  <section id="uploads" class="uploads-section">
-    <h2>Upload Media</h2>
-    <form id="upload-form" enctype="multipart/form-data">
-      <div class="upload-group">
-        <label for="image-upload">Upload Image:</label>
-        <input type="file" id="image-upload" name="image-upload" accept="image/*" required>
-      </div>
-      <div class="upload-group">
-        <label for="video-upload">Upload Video:</label>
-        <input type="file" id="video-upload" name="video-upload" accept="video/*" required>
-      </div>
-      <div class="upload-group">
-        <label for="youtube-link">YouTube Video Link:</label>
-        <input type="url" id="youtube-link" name="youtube-link" placeholder="https://www.youtube.com/watch?v=example" required>
-      </div>
-      <button type="submit" class="btn-primary">Upload</button>
-    </form>
-  </section>
-
-  <section id="blog" class="blog-section">
-    <!-- Blog Section Content -->
-  </section>
-
+  <!-- Sidebar -->
   <div class="dashboard-container">
     <aside class="sidebar">
       <h2>Dashboard Menu</h2>
@@ -72,9 +18,12 @@
         <li><a href="#profile">Profile</a></li>
         <li><a href="#settings">Settings</a></li>
         <li><a href="#reports">Reports</a></li>
-        <li><a href="#">Logout</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="profile.html">Profile</a></li>
       </ul>
     </aside>
+    
+    <!-- Main Content -->
     <main class="main-content">
       <header>
         <h1>Welcome to Speed Money Transfer</h1>
@@ -84,7 +33,7 @@
         <h2>Dashboard Home</h2>
         <div>
           <!-- Content for the dashboard home -->
-          <form id="transaction-form">
+          <form id="transaction-form" action="/api/transactions" method="POST">
             <label for="amount">Amount:</label>
             <input type="number" id="amount" name="amount" required>
             <label for="from-currency">From Currency:</label>
@@ -102,35 +51,7 @@
           </form>
         </div>
       </section>
-      <section id="transactions" class="tab-content">
-        <h2>Transactions</h2>
-        <p>Record and view your transactions here.</p>
-      </section>
-      <section id="converter" class="tab-content">
-        <h2>Converter</h2>
-        <p>Convert money with the latest exchange rates.</p>
-      </section>
-      <section id="profile" class="tab-content">
-        <h2>User Profile</h2>
-        <div>
-          <!-- Content for the user profile -->
-          <p>Update user profile information here.</p>
-        </div>
-      </section>
-      <section id="settings" class="tab-content">
-        <h2>Settings</h2>
-        <div>
-          <!-- Content for the settings -->
-          <p>Manage account settings and preferences here.</p>
-        </div>
-      </section>
-      <section id="reports" class="tab-content">
-        <h2>Reports</h2>
-        <div>
-          <!-- Content for the reports -->
-          <p>View and analyze transaction reports.</p>
-        </div>
-      </section>
+      <!-- Other sections... -->
     </main>
   </div>
   
