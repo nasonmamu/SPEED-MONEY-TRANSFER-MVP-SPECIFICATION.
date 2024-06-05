@@ -1,64 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Speed Money Transfer</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speed Money Transfer</title>
+    <link rel="stylesheet" href="/public/styles/style.css">
 </head>
 <body>
-  <!-- Sidebar -->
-  <div class="dashboard-container">
-    <aside class="sidebar">
-      <h2>Dashboard Menu</h2>
-      <ul>
-        <li><a href="#home" class="active">Home</a></li>
-        <li><a href="#transactions">Transactions</a></li>
-        <li><a href="#converter">Converter</a></li>
-        <li><a href="#profile">Profile</a></li>
-        <li><a href="#settings">Settings</a></li>
-        <li><a href="#reports">Reports</a></li>
-        <li><a href="login.html">Login</a></li>
-        <li><a href="profile.html">Profile</a></li>
-      </ul>
-    </aside>
-    
-    <!-- Main Content -->
-    <main class="main-content">
-      <header>
-        <h1>Welcome to Speed Money Transfer</h1>
-        <img src="images/logo.png" alt="Logo">
-      </header>
-      <section id="home" class="tab-content active">
-        <h2>Dashboard Home</h2>
-        <div>
-          <!-- Content for the dashboard home -->
-          <form id="transaction-form" action="/api/transactions" method="POST">
-            <label for="amount">Amount:</label>
-            <input type="number" id="amount" name="amount" required>
-            <label for="from-currency">From Currency:</label>
-            <select id="from-currency" name="from-currency" required>
-              <option value="BTC">Bitcoin (BTC)</option>
-              <option value="ETH">Ethereum (ETH)</option>
-              <!-- Add more currency options here -->
-            </select>
-            <label for="to-currency">To Currency:</label>
-            <select id="to-currency" name="to-currency" required>
-              <option value="USDT">Tether (USDT)</option>
-              <!-- Add more currency options here -->
-            </select>
-            <button type="submit" class="disco">Exchange</button>
-          </form>
-        </div>
-      </section>
-      <!-- Other sections... -->
-    </main>
-  </div>
-  
-  <footer>
-    <p>&copy; 2024 Speed Money Transfer. All rights reserved.</p>
-  </footer>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <h2>Dashboard Menu</h2>
+            <ul>
+                <li><a href="/" class="active">Home</a></li>
+                <li><a href="/transaction">Transactions</a></li>
+                <li><a href="/profile">Profile</a></li>
+                <li><a href="/login">Login</a></li> 
+            </ul>
+        </aside>
 
-  <script src="script.js"></script>
+        <main class="main-content">
+            <header>
+                <h1>Welcome to Speed Money Transfer</h1>
+            </header>
+
+            <section id="home" class="tab-content active">
+                <h2>Dashboard Home</h2>
+                <div class="form-container"> 
+                    <form id="transaction-form" action="/api/transactions" method="POST" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="receiver">Receiver Username:</label>
+                            <input type="text" id="receiver" name="receiver" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="amount">Amount:</label>
+                            <input type="number" id="amount" name="amount" min="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="receipt">Receipt (Optional):</label>
+                            <input type="file" id="receipt" name="receipt">
+                        </div>
+                        <button type="submit" class="btn-primary">Send</button>
+                    </form>
+                    <div id="transaction-error" class="error-message"></div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <footer>
+        <p>&copy; 2024 Speed Money Transfer. All rights reserved.</p>
+    </footer>
+    <script>
+        const transactionForm = document.getElementById('transaction-form');
+        const transactionError = document.getElementById('transaction-error');
+
+        transactionForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Form data and validation (add your validation logic here)
+
+            try {
+                const response = await fetch('/api/transactions', {
+                    method: 'POST',
+                    // ... (rest of your fetch logic)
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.error || 'Transaction failed.');
+                }
+
+                // Success: Display a success message or redirect
+                transactionError.textContent = ''; // Clear any previous errors
+                alert('Transaction created successfully!');
+                // Redirect or update the UI as needed
+            } catch (error) {
+                console.error('Error during transaction creation:', error);
+                transactionError.textContent = error.message;
+            }
+        });
+    </script>
+    <script src="/public/scripts/script.js"></script> 
 </body>
 </html>

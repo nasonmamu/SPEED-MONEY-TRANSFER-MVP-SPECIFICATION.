@@ -1,52 +1,60 @@
-// Function to fetch and display user profile data
-function fetchUserProfile() {
-  fetch('/api/users/profile')
-    .then(response => response.json())
-    .then(data => {
-      // Assuming there's an element with id "profile-info" to display profile data
-      const profileInfo = document.getElementById('profile-info');
-      profileInfo.innerHTML = `<p>Username: ${data.username}</p><p>Email: ${data.email}</p>`;
-    })
-    .catch(error => {
+document.addEventListener('DOMContentLoaded', async () => {
+  const profileInfo = document.getElementById('profile-info');
+  const updateProfileForm = document.getElementById('update-profile-form');
+  const profileError = document.getElementById('profile-error');
+
+  try {
+      const response = await fetch('/api/users/profile', {
+          headers: {
+              Authorization: `Bearer ${localStorage.getItem('token')}`
+          }
+      });
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      const userData = await response.json();
+      
+      //check if the userData returned from the server is null or undefined
+      if(!userData){
+          profileInfo.innerHTML = `<p>Error fetching Profile!</p>`;
+      }else{
+      profileInfo.innerHTML = `
+          <p>Username: ${userData.username}</p>
+          <p>Email: ${userData.email}</p>
+          ${userData.profilePicture ? `<img src="/uploads/${userData.profilePicture}" alt="Profile Picture" class="profile-pic">` : ''}
+      `;
+
+      // Populate the form fields with the user data
+      updateProfileForm.username.value = userData.username;
+      updateProfileForm.email.value = userData.email;
+      }
+
+  } catch (error) {
       console.error('Error fetching profile:', error);
-    });
-}
-
-// Function to update user profile
-function updateProfile(e) {
-  e.preventDefault(); // Prevent form submission
-  
-  const updatedProfile = {
-    username: document.getElementById('username').value,
-    email: document.getElementById('email').value
-    // Add more fields as needed
-  };
-
-  const formData = new FormData();
-  formData.append('username', updatedProfile.username);
-  formData.append('email', updatedProfile.email);
-  const profilePictureInput = document.getElementById('profilePicture');
-  if (profilePictureInput.files.length > 0) {
-    formData.append('profilePicture', profilePictureInput.files[0]);
+      profileInfo.innerHTML = `<p>Error fetching Profile!</p>`;
   }
 
-  fetch('/api/users/profile', {
-    method: 'PUT',
-    body: formData
-  })
-    .then(response => response.json())
-    .then(data => {
-      alert(data.message); // Assuming server responds with a success message
-      // Optionally update UI or redirect user
-      fetchUserProfile(); // Refresh profile data after update
-    })
-    .catch(error => {
-      console.error('Error updating profile:', error);
-    });
-}
+  updateProfileForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
 
-// Example event listener for updating profile
-document.getElementById('updateProfileForm').addEventListener('submit', updateProfile);
+      const formData = new FormData(updateProfileForm);
 
-// Fetch profile data when the page loads
-document.addEventListener('DOMContentLoaded', fetchUserProfile);
+      try {
+          const response = await fetch('/api/users/profile', {
+              method: 'PUT',
+              body: formData,
+              headers: {
+                  Authorization: `Bearer ${localStorage.getItem('token')}`
+              }
+          });
+          if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+
+          const data = await response.json();
+          profileError.textContent = '';
+          alert(data.message);
+          // Refresh the profile after successful update
+          fetchUserProfile(); 
+      } catch (error) {
+          console.error('Error updating profile:', error);
+          profileError.textContent = error.message;
+      }
+  });
+});

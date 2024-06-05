@@ -1,30 +1,22 @@
-const express = require('express');
-const router = express.Router();
-const auth = require('../middleware/auth');
-const User = require('../models/user');
-
-// Fetch user profile
-router.get('/profile', auth, async (req, res) => {
-  res.send(req.user);
-});
-
-// Update user profile
-router.put('/profile', auth, async (req, res) => {
-  try {
-    const updates = Object.keys(req.body);
-    const allowedUpdates = ['username', 'email'];
-    const isValidOperation = updates.every((update) => allowedUpdates.includes(update));
-
-    if (!isValidOperation) {
-      return res.status(400).send({ error: 'Invalid updates!' });
-    }
-
-    updates.forEach((update) => (req.user[update] = req.body[update]));
-    await req.user.save();
-    res.send({ message: 'Profile updated successfully!' });
-  } catch (e) {
-    res.status(400).send(e);
+// Controller function to get the user's profile
+async function getProfile(req, res) {
+  try{
+    const user = await User.findById(req.user._id).select('-password'); // Exclude password from the response
+  if (!user) {
+    return res.status(404).json({ message: 'User not found' });
   }
-});
+  res.status(200).json(user);
+  }catch(err){
+    res.status(500).json({error:'Internal Server Error'})
+  }
+};
 
-module.exports = router;
+// Controller function to update the user's profile
+async function updateProfile(req, res) {
+  // ... (implement logic to update the user's profile)
+};
+
+module.exports = {
+  getProfile,
+  updateProfile
+};

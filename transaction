@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/public/style.css">
+  <title>Transaction - Speed Money Transfer</title>
+</head>
+<body>
+  <!-- Header Section -->
+  <header>
+    <!-- Add header content, navigation, etc. -->
+  </header>
+
+  <!-- Main Content Section -->
+  <main class="dashboard-container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h2>Dashboard</h2>
+      <ul>
+        <li><a href="/dashboard.html">Home</a></li>
+        <li><a href="/profile.html">Profile</a></li>
+        <li><a href="/transaction.html" class="active">Create Transaction</a></li>
+        <!-- Add more sidebar links as needed -->
+      </ul>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+      <h2>Create Transaction</h2>
+      <form id="transactionForm" enctype="multipart/form-data">
+        <label for="receiver">Receiver:</label>
+        <input type="text" id="receiver" name="receiver" required>
+        <br>
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" name="amount" required>
+        <br>
+        <label for="receipt">Receipt:</label>
+        <input type="file" id="receipt" name="receipt">
+        <br>
+        <button type="submit">Create Transaction</button>
+      </form>
+    </div>
+  </main>
+
+  <!-- Footer Section -->
+  <footer>
+    <!-- Add footer content -->
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="/public/script/transaction.js"></script>
+</body>
+</html>
