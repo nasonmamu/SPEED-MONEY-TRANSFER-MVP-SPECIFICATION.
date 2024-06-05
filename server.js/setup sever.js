@@ -3,19 +3,15 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const connectDB = require('./config/db');
 const dotenv = require("dotenv").config();
-const errorHandler = require('./middleware/errorMiddleware')
-
-
+const errorHandler = require('./middleware/errorMiddleware');
 
 const app = express();
 connectDB();
 
-
 // Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public'))); 
-
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes
 const authRoutes = require('./routes/auth');
@@ -25,7 +21,6 @@ const userRoutes = require('./routes/users');
 app.use('/api/auth', authRoutes);
 app.use('/api/transactions', transactionRoutes);
 app.use('/api/users', userRoutes);
-
 
 // Serve static files from the 'views' directory
 app.use('/', express.static(path.join(__dirname, 'views')));

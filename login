@@ -3,48 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile - Speed Money Transfer</title>
+    <title>Login - Speed Money Transfer</title>
     <link rel="stylesheet" href="/public/styles/style.css">
 </head>
 <body>
-    <div class="dashboard-container">
-        <aside class="sidebar">
-            <h2>Dashboard Menu</h2>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/transaction">Transactions</a></li>
-                <li><a href="/profile" class="active">Profile</a></li>
-                <li><a href="#" id="logout-link">Logout</a></li> 
-            </ul>
-        </aside>
-
-        <main class="main-content">
-            <h2>Profile</h2>
-            <div id="profile-info">
-                </div>
-            <form id="update-profile-form" enctype="multipart/form-data">
-                <div class="form-group">
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" name="username" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="profilePicture">Profile Picture:</label>
-                    <input type="file" id="profilePicture" name="profilePicture">
-                </div>
-                <button type="submit" class="btn-primary">Update Profile</button>
-                <div id="profile-error" class="error-message"></div>
-            </form>
-        </main>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="login-form">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit" class="btn-primary">Login</button>
+            <div id="login-error" class="error-message"></div>
+        </form>
     </div>
-   <script src="/public/scripts/profile.js"></script>
+
     <script>
-        document.getElementById('logout-link').addEventListener('click', () => {
-            localStorage.removeItem('token');
-            window.location.href = '/login';
+        const loginForm = document.getElementById('login-form');
+        const loginError = document.getElementById('login-error');
+
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const response = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ username, password })
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.error || 'Login failed.');
+                }
+
+                const data = await response.json();
+                localStorage.setItem('token', data.token);
+                loginError.textContent = ''; // Clear any previous errors
+                alert('Login successful!');
+                window.location.href = '/'; // Redirect to dashboard
+            } catch (error) {
+                console.error('Error during login:', error);
+                loginError.textContent = error.message;
+            }
         });
     </script>
 </body>

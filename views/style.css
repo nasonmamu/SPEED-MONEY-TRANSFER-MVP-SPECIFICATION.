@@ -1,16 +1,29 @@
-/* General Styling (Binance-inspired) */
+
+/* General Styling */
 body {
   font-family: "Helvetica Neue", sans-serif; /* Similar to Binance font */
   margin: 0;
   padding: 0;
-  color: #333; /* Dark gray text */
+  color: #2831ac; /* Dark gray text */
   background-color: #141519; /* Dark background */
 }
 
 .container {
   max-width: 1200px; /* Similar to Binance's container width */
   margin: 0 auto;
-  padding: 20px;
+  padding: 40px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+select,
+input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
 }
 
 header {
@@ -19,7 +32,7 @@ header {
 }
 
 h1, h2 {
-  color: #fff; /* White headings */
+  color: #331a8a; /* White headings */
 }
 
 .sidebar {
@@ -45,7 +58,7 @@ h1, h2 {
 
 .sidebar ul li a:hover,
 .sidebar ul li a.active {
-  background-color: #000000da; /* Darker gray on hover */
+  background-color: #38393D; /* Darker gray on hover */
 }
 
 .main-content {
@@ -60,7 +73,7 @@ h1, h2 {
 
 label {
   display: block;
-  color: #3d0bf0;
+  color: #F0B90B;
   margin-bottom: 5px;
 }
 
@@ -77,7 +90,7 @@ input[type="file"] {
 }
 
 button.btn-primary {
-  background-color: #0c0570;
+  background-color: #0bf0e5;
   color: #fff;
   padding: 10px 20px;
   border: none;
@@ -87,13 +100,13 @@ button.btn-primary {
 
 /* Disco Light Effect */
 body {
-  animation: discoLights 5s infinite;
+  animation: discoLights 20s infinite;
 }
 
 @keyframes discoLights {
   0% { background-color: #ff0000; }
-  25% { background-color: #2600ff; }
-  50% { background-color: #021a0263; }
+  25% { background-color: #1100ffc2; }
+  50% { background-color: #00ff00; }
   75% { background-color: #0000ff; }
   100% { background-color: #ff0000; }
 }
@@ -128,4 +141,3 @@ footer {
       margin-left: 0;
   }
 }
-
