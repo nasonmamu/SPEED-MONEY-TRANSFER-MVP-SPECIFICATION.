@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Speed Money Transfer</title>
+   <link rel="stylesheet" href="/public/styles/style.css">
+</head>
+<body>
+   <div class="dashboard-container">
+       <aside class="sidebar">
+           <h2>Dashboard Menu</h2>
+           <ul>
+               <li><a href="/views/dashboard.html" class="active">Home</a></li>
+               <li><a href="/views/transaction.html">Transactions</a></li>
+               <li><a href="/views/profile.html">Profile</a></li>
+               <li><a href="/views/login.html">Login</a></li>
+           </ul>
+       </aside>
+       <main class="main-content">
+           <header>
+               <h1>Welcome to Speed Money Transfer</h1>
+           </header>
+           <section id="home" class="tab-content active">
+               <h2>Dashboard Home</h2>
+               <div class="form-container">
+                   <form id="transaction-form" action="/api/transactions" method="POST" enctype="multipart/form-data">
+                       <div class="form-group">
+                           <label for="receiver">Receiver Username:</label>
+                           <input type="text" id="receiver" name="receiver" required>
+                       </div>
+                       <div class="form-group">
+                           <label for="amount">Amount:</label>
+                           <input type="number" id="amount" name="amount" min="0" required>
+                       </div>
+                       <div class="form-group">
+                           <label for="receipt">Receipt (Optional):</label>
+                           <input type="file" id="receipt" name="receipt">
+                       </div>
+                       <button type="submit" class="btn-primary">Send</button>
+                   </form>
+                   <div id="transaction-error" class="error-message"></div>
+               </div>
+           </section>
+       </main>
+   </div>
+   <footer>
+       <p>&copy; 2024 Speed Money Transfer. All rights reserved.</p>
+   </footer>
+   <script src="/public/scripts/script.js"></script>
+</body>
+</html>
