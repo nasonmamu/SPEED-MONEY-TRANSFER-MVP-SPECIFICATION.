@@ -1,17 +1,11 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const tabs = document.querySelectorAll('.sidebar ul li a');
-  const contents = document.querySelectorAll('.tab-content');
+// Handle form submission for transactions
+document.getElementById('transaction-form').addEventListener('submit', function (event) {
+  event.preventDefault();
+  const receiver = document.getElementById('receiver').value;
+  const amount = document.getElementById('amount').value;
+  const receipt = document.getElementById('receipt').files[0];
 
-  tabs.forEach(tab => {
-      tab.addEventListener('click', (e) => {
-          e.preventDefault();
-          
-          tabs.forEach(t => t.classList.remove('active'));
-          tab.classList.add('active');
+  // Add your API call logic here
 
-          contents.forEach(content => content.classList.remove('active'));
-          const target = document.querySelector(tab.getAttribute('href'));
-          if(target) target.classList.add('active'); //make sure that the target exist in DOM before add the class
-      });
-  });
+  console.log('Transaction form submitted', { receiver, amount, receipt });
 });

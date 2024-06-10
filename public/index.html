@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Speed Money Transfer</title>
+   <link rel="stylesheet" href="/public/styles/style.css">
+   <script src="https://kit.fontawesome.com/840b950622.js" crossorigin="anonymous"></script>
+</head>
+<body>
+   <header>
+       <nav>
+           <div class="navbar">
+               <ul>
+                   <li><a href="#home">Home</a></li>
+                   <li><a href="#features">Features</a></li>
+                   <li><a href="#about">About</a></li>
+                   <li><a href="login.html" class="btn">Log In</a></li>
+               </ul>
+           </div>
+       </nav>
+       <div class="intro">
+           <div class="name">
+               <h1>Speed Money Transfer</h1>
+               <p>Ensuring seamless money transfers worldwide</p>
+           </div>
+           <div class="image">
+               <img src="/images/Translate1.jpg" alt="Website Intro">
+           </div>
+       </div>
+   </header>
+   <div class="dashboard-container">
+       <aside class="sidebar">
+           <h2>Dashboard Menu</h2>
+           <ul>
+               <li><a href="/views/dashboard.html" class="active">Home</a></li>
+               <li><a href="/views/transaction.html">Transactions</a></li>
+               <li><a href="/views/profile.html">Profile</a></li>
+               <li><a href="/views/login.html">Login</a></li>
+           </ul>
+       </aside>
+       <main class="main-content">
+           <header>
+               <h1>Welcome to Speed Money Transfer</h1>
+           </header>
+           <section id="home" class="tab-content active">
+               <h2>Dashboard Home</h2>
+               <div class="form-container">
+                   <form id="transaction-form" action="/api/transactions" method="POST" enctype="multipart/form-data">
+                       <div class="form-group">
+                           <label for="receiver">Receiver Username:</label>
+                           <input type="text" id="receiver" name="receiver" required>
+                       </div>
+                       <div class="form-group">
+                           <label for="amount">Amount:</label>
+                           <input type="number" id="amount" name="amount" min="0" required>
+                       </div>
+                       <div class="form-group">
+                           <label for="receipt">Receipt (Optional):</label>
+                           <input type="file" id="receipt" name="receipt">
+                       </div>
+                       <button type="submit" class="btn-primary">Send</button>
+                   </form>
+                   <div id="transaction-error" class="error-message"></div>
+               </div>
+           </section>
+           <section id="features">
+               <h1>Features</h1>
+               <div class="feature">
+                   <img src="/images/weather.jpg" alt="Secure Transactions">
+                   <h2>Secure Transactions</h2>
+                   <p>Ensuring safe and secure money transfers.</p>
+               </div>
+               <div class="feature">
+                   <img src="/images/languages.jpg" alt="Global Reach">
+                   <h2>Global Reach</h2>
+                   <p>Transfer money across the globe with ease.</p>
+               </div>
+               <div class="feature">
+                   <img src="/images/location.jpg" alt="Easy Accessibility">
+                   <h2>Easy Accessibility</h2>
+                   <p>Access our services from anywhere, at any time.</p>
+               </div>
+           </section>
+           <section id="about">
+               <h1>About</h1>
+               <div class="about-story">
+                   <h2>Where it all began</h2>
+                   <p>
+                       <span id="intro">The inspiration for Speed Money Transfer comes from the need to provide seamless financial services globally.</span>
+                       <span class="read-more" onclick="toggleVisibility()">Read more...</span>
+                   </p>
+                   <div class="additional-paragraphs">
+                       <p>Our journey started with a mission to bridge the gap in financial services, ensuring that people can transfer money securely and swiftly.</p>
+                       <p>We are committed to delivering top-notch services that cater to the diverse needs of our global clientele.</p>
+                   </div>
+               </div>
+               <div class="get-started">
+                   <button><a href="login.html">Get Started</a></button>
+               </div>
+               <div class="git">
+                   <a href="https://github.com/nasonmamu/SPEED-MONEY-TRANSFER-MVP-SPECIFICATION..git">
+                       <i class="fa-brands fa-github"></i> Github Repository
+                   </a>
+               </div>
+           </section>
+       </main>
+   </div>
+   <footer>
+       <p>&copy; 2024 Speed Money Transfer. All rights reserved.</p>
+   </footer>
+   <script src="/public/scripts/script.js"></script>
+   <script>
+       let additionalParagraphsVisible = false;
+       function toggleVisibility() {
+           const additionalParagraphs = document.querySelectorAll('.additional-paragraphs');
+           additionalParagraphsVisible = !additionalParagraphsVisible;
+           additionalParagraphs.forEach(paragraph => {
+               paragraph.style.display = additionalParagraphsVisible ? 'block' : 'none';
+           });
+       }
+   </script>
+</body>
+</html>
