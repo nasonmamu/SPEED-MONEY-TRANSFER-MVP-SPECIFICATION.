@@ -1,54 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/public/style.css">
-  <title>Transaction - Speed Money Transfer</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transactions - Speed Money Transfer</title>
+    <link rel="stylesheet" href="/public/styles/style.css">
 </head>
 <body>
-  <!-- Header Section -->
-  <header>
-    <!-- Add header content, navigation, etc. -->
-  </header>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <h2>Dashboard Menu</h2>
+            <ul>
+                <li><a href="/views/dashboard.html">Home</a></li>
+                <li><a href="/views/transaction.html" class="active">Transactions</a></li>
+                <li><a href="/views/profile.html">Profile</a></li>
+                <li><a href="/logout.html" id="logout-link">Logout</a></li> 
+            </ul>
+        </aside>
 
-  <!-- Main Content Section -->
-  <main class="dashboard-container">
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <h2>Dashboard</h2>
-      <ul>
-        <li><a href="/dashboard.html">Home</a></li>
-        <li><a href="/profile.html">Profile</a></li>
-        <li><a href="/transaction.html" class="active">Create Transaction</a></li>
-        <!-- Add more sidebar links as needed -->
-      </ul>
+        <main class="main-content">
+            <h2>Transactions</h2>
+            <div class="form-container">
+                <form id="transaction-form" action="/api/transactions" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="receiver">Receiver Username:</label>
+                        <input type="text" id="receiver" name="receiver" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="amount">Amount:</label>
+                        <input type="number" id="amount" name="amount" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="receipt">Receipt (Optional):</label>
+                        <input type="file" id="receipt" name="receipt">
+                    </div>
+                    <button type="submit" class="btn-primary">Send</button>
+                </form>
+                <div id="transaction-error" class="error-message"></div>
+            </div>
+        </main>
     </div>
-
-    <!-- Main Content Area -->
-    <div class="main-content">
-      <h2>Create Transaction</h2>
-      <form id="transactionForm" enctype="multipart/form-data">
-        <label for="receiver">Receiver:</label>
-        <input type="text" id="receiver" name="receiver" required>
-        <br>
-        <label for="amount">Amount:</label>
-        <input type="number" id="amount" name="amount" required>
-        <br>
-        <label for="receipt">Receipt:</label>
-        <input type="file" id="receipt" name="receipt">
-        <br>
-        <button type="submit">Create Transaction</button>
-      </form>
-    </div>
-  </main>
-
-  <!-- Footer Section -->
-  <footer>
-    <!-- Add footer content -->
-  </footer>
-
-  <!-- JavaScript -->
-  <script src="/public/script/transaction.js"></script>
+   <footer>
+       <p>&copy; 2024 Speed Money Transfer. All rights reserved.</p>
+   </footer>
+   <script src="/public/scripts/script.js"></script>
 </body>
 </html>

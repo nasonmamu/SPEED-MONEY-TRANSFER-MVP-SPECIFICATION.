@@ -11,17 +11,17 @@
         <aside class="sidebar">
             <h2>Dashboard Menu</h2>
             <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/transaction">Transactions</a></li>
-                <li><a href="/profile" class="active">Profile</a></li>
-                <li><a href="#" id="logout-link">Logout</a></li> 
+                <li><a href="/views/dashboard.html">Home</a></li>
+                <li><a href="/views/transaction.html">Transactions</a></li>
+                <li><a href="/views/profile.html" class="active">Profile</a></li>
+                <li><a href="/logout.html" id="logout-link">Logout</a></li> 
             </ul>
         </aside>
 
         <main class="main-content">
             <h2>Profile</h2>
-            <div id="profile-info">
-                </div>
+            <div id="profile-info"></div>
+
             <form id="update-profile-form" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="username">Username:</label>
@@ -41,11 +41,5 @@
         </main>
     </div>
    <script src="/public/scripts/profile.js"></script>
-    <script>
-        document.getElementById('logout-link').addEventListener('click', () => {
-            localStorage.removeItem('token');
-            window.location.href = '/login';
-        });
-    </script>
 </body>
 </html>
