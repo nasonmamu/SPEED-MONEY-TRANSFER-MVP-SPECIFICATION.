@@ -1,52 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Dashboard - Speed Money Transfer</title>
-   <link rel="stylesheet" href="/public/styles/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Speed Money Transfer</title>
+    <link rel="stylesheet" href="/public/style.css">
 </head>
 <body>
-   <div class="dashboard-container">
-       <aside class="sidebar">
-           <h2>Dashboard Menu</h2>
-           <ul>
-               <li><a href="/views/dashboard.html" class="active">Home</a></li>
-               <li><a href="/views/transaction.html">Transactions</a></li>
-               <li><a href="/views/profile.html">Profile</a></li>
-               <li><a href="/logout.html">Logout</a></li>
-           </ul>
-       </aside>
-       <main class="main-content">
-           <header>
-               <h1>Welcome to Speed Money Transfer</h1>
-           </header>
-           <section id="home" class="tab-content active">
-               <h2>Dashboard Home</h2>
-               <div class="form-container">
-                   <form id="transaction-form" action="/api/transactions" method="POST" enctype="multipart/form-data">
-                       <div class="form-group">
-                           <label for="receiver">Receiver Username:</label>
-                           <input type="text" id="receiver" name="receiver" required>
-                       </div>
-                       <div class="form-group">
-                           <label for="amount">Amount:</label>
-                           <input type="number" id="amount" name="amount" min="0" required>
-                       </div>
-                       <div class="form-group">
-                           <label for="receipt">Receipt (Optional):</label>
-                           <input type="file" id="receipt" name="receipt">
-                       </div>
-                       <button type="submit" class="btn-primary">Send</button>
-                   </form>
-                   <div id="transaction-error" class="error-message"></div>
-               </div>
-           </section>
-       </main>
+    <div class="dashboard-container">
+        <!-- Horizontal Navigation Bar -->
+        <nav class="horizontal-nav">
+            <div class="nav-buttons">
+                <button id="backButton">Back</button>
+                <button id="forwardButton">Forward</button>
+                <button id="reloadButton">Reload</button>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+                <button type="submit">Search</button>
+            </div>
+            <div class="nav-address-bar">
+                <!-- Address Bar goes here -->
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home" class="tab-link active">Home</a></li>
+                <li><a href="#transactions" class="tab-link">Transactions</a></li>
+                <li><a href="#conversion" class="tab-link">Money Conversion</a></li>
+                <li><a href="#promotion" class="tab-link">Promotion</a></li>
+                <li><a href="#blogs" class="tab-link">Blogs</a></li>
+                <li><a href="#news" class="tab-link">News</a></li>
+                <li><a href="/logout.html">Logout</a></li>
+                <li class="dropdown">
+                   
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum laboriosam animi distinctio magnam nemo fugiat velit, dolorem, dolore architecto quidem dolor aut nostrum harum quia commodi esse eligendi in consectetur. Impedit quas laboriosam necessitatibus quidem? Soluta ipsam eligendi modi a eveniet itaque provident, voluptate assumenda nulla ut magni incidunt quam autem odit vitae aliquam quia, velit dignissimos, amet possimus veritatis nobis esse! Placeat tempora ut sint neque nesciunt voluptates facere dignissimos quos incidunt voluptatem vitae sapiente, ipsum accusamus at iure modi. Nobis assumenda iure perferendis repellendus modi architecto eveniet officia quos eum pariatur provident vitae sapiente eos eaque, unde soluta vero libero fuga, a quod voluptatum saepe aspernatur minus. Asperiores, impedit nostrum ad delectus quasi molestias sequi eaque eius sunt quidem inventore modi ipsum libero dignissimos distinctio rem. Exercitationem unde cumque quas placeat voluptatibus. Magni, laboriosam consectetur sunt delectus dolore non sint asperiores nemo tempore repellendus repellat, inventore, amet maxime officia aperiam? Ullam odio magni quas obcaecati cupiditate perspiciatis iste veritatis. Molestias neque suscipit voluptates tempore quisquam, eum dolorem officia est doloribus odio perferendis recusandae autem aperiam veniam eos? Facere dignissimos a minima temporibus repellat in error at atque architecto enim, quia ipsum fuga recusandae distinctio totam illo magnam maxime esse quae odio fugit molestias exercitationem veritatis est. Ducimus itaque quas non! Maxime, aut iusto ad consequatur qui blanditiis. Nam eum repellendus itaque obcaecati, aut illo nesciunt. Impedit tempore assumenda laboriosam officia quisquam veritatis quis possimus, architecto alias quidem sunt enim quos aliquam qui at explicabo voluptates ullam dolores soluta reiciendis inventore itaque. Nihil obcaecati reiciendis dicta commodi laborum. Quas dolores temporibus esse ut doloribus quae quos. Eos libero aperiam esse provident? Tenetur iste qui reprehenderit iure cumque nesciunt esse reiciendis sed. Dicta dolor illum, dolorum sunt, totam neque atque fugit praesentium ullam ex deserunt magnam aliquid iusto rem nemo cupiditate commodi! Doloribus, ducimus. Dolore corrupti iure eius tenetur fugit nihil? Earum repellendus deleniti numquam ea aut, eius, dolorem rem perspiciatis voluptates atque aliquam libero modi! Nam autem deserunt debitis quibusdam. Deleniti ut voluptatem amet quod molestiae non similique saepe impedit deserunt. Voluptas delectus aliquam tempora amet quidem tempore debitis cupiditate expedita perspiciatis illo. Quae fuga, odio praesentium nisi maiores voluptas consequatur odit dolore eos in maxime quam quia temporibus numquam quod aperiam asperiores consectetur neque distinctio, aut reprehenderit hic. Repellendus quam id ratione. Laborum vitae molestiae ipsum distinctio itaque fugit est quia voluptatibus magni officia. Nisi, repellendus. Itaque soluta voluptate harum repudiandae, optio dignissimos, iure impedit fugiat sit sequi esse maiores! Provident nostrum cupiditate dolorum a cum id recusandae rem repudiandae, necessitatibus officia blanditiis aperiam vel consectetur repellendus maxime impedit eum aut ratione ea, modi dolore. Dicta, non rerum perferendis nemo vitae aliquam voluptatibus repellat consequatur. Labore in minus quasi mollitia deleniti, esse vel quis minima dignissimos, placeat iure explicabo quod aperiam odit consequatur ipsum vitae odio! Facere laborum officiis asperiores distinctio nam est culpa sit odio maxime temporibus itaque perferendis, tempore veritatis blanditiis minus voluptatem dignissimos adipisci rem quis minima quibusdam eveniet corporis ipsa. Pariatur sed beatae totam libero eius neque excepturi veniam sequi, consequatur similique minus dolore mollitia earum soluta, voluptas dolorum quaerat odit error? Rem debitis optio, iusto incidunt consectetur voluptatem ullam maxime fuga quae nemo perspiciatis officia, veniam nisi iste nobis asperiores, velit nam harum nostrum error facere consequuntur soluta dolor molestias? Ab rem odio quasi, vitae debitis quidem quas accusantium architecto, dolorem blanditiis minima in laborum corrupti enim quaerat id alias eum. Dicta placeat ullam commodi cupiditate, natus voluptatibus praesentium reprehenderit vitae quia rerum harum laudantium dolores ut totam exercitationem laboriosam non nisi nostrum minima sunt? Labore neque laboriosam delectus perferendis deleniti assumenda voluptatem, tenetur quod ea. Non sint recusandae officiis illo alias labore, aliquid impedit? Ducimus magnam quibusdam, magni ipsa assumenda earum cum pariatur in numquam temporibus nisi odit voluptatum culpa labore ab perspiciatis porro! Excepturi sed accusamus iure animi asperiores dicta assumenda officia iste voluptate blanditiis, corrupti rem nobis cum expedita. Ducimus molestias impedit adipisci laudantium quis tempore at sint. Incidunt accusantium rem maxime aliquam nisi ipsam libero ab repudiandae recusandae praesentium, quaerat veritatis illum ipsum labore vitae voluptate facilis, omnis a, aperiam quidem tempore mollitia iste quis dolores? Nemo ipsum, voluptatem minima tenetur necessitatibus quas eum. Odit dicta perferendis expedita magni dolore, impedit facilis accusamus praesentium maxime numquam ab dolorum ea, ut, quisquam accusantium nobis natus aliquid ad odio! A inventore enim libero hic facilis in earum animi, ea harum eaque cumque tenetur magni, sit ratione quasi maiores labore corporis quam consequuntur! Eaque, quos nam. Eius neque repudiandae officia necessitatibus vitae error distinctio iusto consequatur optio deleniti cupiditate asperiores officiis mollitia dicta saepe ipsam, blanditiis, maiores quas magni, commodi expedita impedit. Reiciendis dignissimos ipsum molestias facere iste accusamus excepturi numquam nulla velit illo, quos aut odit eligendi optio corporis voluptatem. Eaque dicta autem voluptates, velit obcaecati enim nulla saepe suscipit accusantium omnis similique fuga deserunt eligendi, perspiciatis cum nostrum architecto quos minus asperiores. Distinctio amet facilis soluta pariatur commodi itaque at illum atque aut earum mollitia fuga iste, ipsa quod. Dicta neque, animi veritatis quod facilis libero, odit suscipit sint a ipsum perferendis saepe assumenda vitae laborum velit accusantium nam cumque amet dolores! Consequatur eveniet reprehenderit facilis repudiandae ipsum delectus cum mollitia architecto neque asperiores error distinctio possimus iusto, quo impedit nihil nulla libero harum id non? Nostrum rem porro doloremque vel perferendis totam. Voluptates harum nostrum dolor iste quam deserunt inventore repellendus odio quaerat error quidem nam, laborum vero eum adipisci ducimus. Perferendis, omnis assumenda! Necessitatibus laudantium sunt nobis inventore. Dignissimos porro eligendi sequi asperiores at tempore, nam, fugit tempora architecto quibusdam provident? Modi labore natus harum temporibus quibusdam deserunt, magnam velit expedita fuga sunt quaerat eos consequuntur ea iure praesentium ab corporis, quisquam iste nihil nemo? Commodi, aut facilis doloribus nihil sed placeat sunt, optio odio magnam voluptates expedita minima recusandae ex, id sint possimus facere! Aspernatur alias cupiditate dicta itaque. In dolorem cupiditate alias officia blanditiis placeat reprehenderit, commodi necessitatibus fugit soluta nulla provident voluptatem dignissimos odit rerum maiores deserunt ducimus velit sint rem sit, aut odio. Ex.
+    </div>
+
+   <div class="footer">
+     <!-- Footer Content -->
+     <div class="footer-container">
+        <div class="footer-column">
+            <h3>Learn</h3>
+            <ul>
+                <li><a href="#">Crypto Prices</a></li>
+                <li><a href="#">Price Predictions</a></li>
+                <li><a href="#">Buy Cryptocurrencies</a></li>
+                <li><a href="#">Service Options</a></li>
+                <li><a href="#">Support</a></li>
+                <li><a href="#">Fees</a></li>
+                <li><a href="#">APIs</a></li>
+                <li><a href="#">Binance Verification</a></li>
+                <li><a href="#">Trading Rules</a></li>
+                <li><a href="#">Binance Airdrop Portal</a></li>
+                <li><a href="#">Law Enforcement Requests</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Company</h3>
+            <ul class="footer-list">
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Announcements</a></li>
+                <li><a href="#">News</a></li>
+                <li><a href="#">Press</a></li>
+                <li><a href="#">Legal</a></li>
+                <li><a href="#">Terms</a></li>
+                <li><a href="#">Privacy</a></li>
+                <li><a href="#">Building Trust</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Community</a></li>
+                <li><a href="#">Sitemap</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Products</h3>
+            <ul>
+                <li><a href="#">Exchange</a></li>
+                <li><a href="#">Buy Crypto</a></li>
+                <li><a href="#">Leveraged Tokens</a></li>
+                <li><a href="#">TradingView</a></li>
+                <li><a href="#">Pay</a></li>
+                <li><a href="#">Academy</a></li>
+                <li><a href="#">Live</a></li>
+                <li><a href="#">Tax</a></li>
+                <li><a href="#">Gift Card</a></li>
+                <li><a href="#">Launchpool</a></li>
+                <li><a href="#">Auto-Invest</a></li>
+                <li><a href="#">ETH Staking</a></li>
+                <li><a href="#">NFT</a></li>
+                <li><a href="#">BNB</a></li>
+                <li><a href="#">BABT</a></li>
+                <li><a href="#">Research</a></li>
+                <li><a href="#">Charity</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="copyright">
+        <p>&copy; 2024 Speed Money Transfer. All rights reserved.</p>
+    </div>
    </div>
-   <footer>
-       <p>&copy; 2024 Speed Money Transfer. All rights reserved.</p>
-   </footer>
-   <script src="/public/scripts/script.js"></script>
+
+    <script src="/public/script.js"></script>
 </body>
 </html>

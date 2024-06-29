@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Verify Email - Speed Money Transfer</title>
+   <link rel="stylesheet" href="/public/style.css">
+</head>
+<body>
+   <div class="verification-page">
+       <div class="verification-container">
+           <h1>Verify Your Email Address</h1>
+           <form id="verify-email-form">
+               <div class="form-group">
+                   <label for="email">Enter Verification Code</label>
+                   <input type="text" id="email" name="email" required>
+               </div>
+               <button type="submit" class="btn-primary">Verify Email</button>
+               <div id="verification-error" class="error-message" style="display:none;">Invalid verification code.</div>
+           </form>
+       </div>
+   </div>
+   <script>
+       document.getElementById('verify-email-form').addEventListener('submit', function(event) {
+           event.preventDefault();
+           const verificationCode = document.getElementById('email').value;
+
+           // Simulated verification process
+           const storedVerificationCode = localStorage.getItem('emailVerificationCode');
+
+           if (verificationCode === storedVerificationCode) {
+               localStorage.setItem('emailVerified', 'true');
+               window.location.href = '/views/dashboard.html'; // Redirect to dashboard after successful verification
+           } else {
+               document.getElementById('verification-error').style.display = 'block';
+           }
+       });
+   </script>
+</body>
+</html>
