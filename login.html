@@ -1,51 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile - Speed Money Transfer</title>
-    <link rel="stylesheet" href="/public/styles/style.css">
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Login - Speed Money Transfer</title>
+   <link rel="stylesheet" href="/public/style.css">
 </head>
 <body>
-    <div class="dashboard-container">
-        <aside class="sidebar">
-            <h2>Dashboard Menu</h2>
-            <ul>
-                <li><a href="https://speed-money-transfer-mvp-specification.pages.dev/views/index.html">Home</a></li>
-                <li><a href="https://speed-money-transfer-mvp-specification.pages.dev/views/transaction.html">Transactions</a></li>
-                <li><a href="https://speed-money-transfer-mvp-specification.pages.dev/views/profile.html" class="active">Profile</a></li>
-                <li><a href="#" id="logout-link">Logout</a></li> 
-            </ul>
-        </aside>
+   <div class="login-page">
+       <div class="login-container">
+           <h1>Login to Speed Money Transfer</h1>
+           <form id="login-form">
+               <div class="form-group">
+                   <label for="email">Email</label>
+                   <input type="email" id="email" name="email" required>
+               </div>
+               <div class="form-group">
+                   <label for="password">Password</label>
+                   <input type="password" id="password" name="password" required>
+               </div>
+               <button type="submit" class="btn-primary">Login</button>
+               <div id="login-error" class="error-message" style="display:none;">Invalid email or password.</div>
+           </form>
+       </div>
+   </div>
+   <script>
+       document.getElementById('login-form').addEventListener('submit', function(event) {
+           event.preventDefault();
+           const email = document.getElementById('email').value;
+           const password = document.getElementById('password').value;
 
-        <main class="main-content">
-            <h2>Profile</h2>
-            <div id="profile-info">
-                </div>
-            <form id="update-profile-form" enctype="multipart/form-data">
-                <div class="form-group">
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" name="username" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="profilePicture">Profile Picture:</label>
-                    <input type="file" id="profilePicture" name="profilePicture">
-                </div>
-                <button type="submit" class="btn-primary">Update Profile</button>
-                <div id="profile-error" class="error-message"></div>
-            </form>
-        </main>
-    </div>
-   <script src="/public/scripts/profile.js"></script>
-    <script>
-        document.getElementById('logout-link').addEventListener('click', () => {
-            localStorage.removeItem('token');
-            window.location.href = '/login';
-        });
-    </script>
+           // Simulated login validation
+           if (email === "user@example.com" && password === "password") {
+               localStorage.setItem('loggedIn', 'true');
+               window.location.href = '/views/dashboard.html';
+           } else {
+               document.getElementById('login-error').style.display = 'block';
+           }
+       });
+   </script>
 </body>
 </html>
