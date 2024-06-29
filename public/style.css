@@ -1,130 +1,119 @@
-/* General Styling (Binance-inspired) */
+/* Reset margins and padding for all elements */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Global Styles */
 body {
-  font-family: "Helvetica Neue", sans-serif; /* Similar to Binance font */
-  margin: 0;
-  padding: 0;
-  color: #333; /* Dark gray text */
-  background-color: #141519; /* Dark background */
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
 }
 
-.container {
-  max-width: 1200px; /* Similar to Binance's container width */
-  margin: 0 auto;
+.dashboard-container {
+  background-color: #fff;
   padding: 20px;
+  margin-bottom: 20px;
 }
 
-header {
-  background-color: #26272C; /* Dark header background */
-  padding: 15px;
-}
-
-h1, h2 {
-  color: #fff; /* White headings */
-}
-
-.sidebar {
-  width: 250px;
-  background-color: #26272C;
-  padding: 20px;
-  height: calc(100vh - 70px); /* Full height minus header & footer */
-  position: fixed; /* Fixed sidebar */
-}
-
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.sidebar ul li a {
-  color: #F0B90B; /* Binance Yellow for links */
-  text-decoration: none;
-  display: block;
-  padding: 10px;
-}
-
-.sidebar ul li a:hover,
-.sidebar ul li a.active {
-  background-color: #38393D; /* Darker gray on hover */
-}
-
-.main-content {
-  margin-left: 270px; /* Adjust for fixed sidebar */
-  padding: 20px;
-}
-
-/* Form Styling */
-.form-group {
-  margin-bottom: 15px;
-}
-
-label {
-  display: block;
-  color: #F0B90B;
-  margin-bottom: 5px;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="number"],
-select,
-input[type="file"] {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-}
-
-button.btn-primary {
-  background-color: #F0B90B;
-  color: #fff;
+.horizontal-nav {
+  background-color: #333;
   padding: 10px 20px;
+  position: relative; /* Ensure relative positioning for absolute children */
+}
+
+.nav-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.nav-address-bar {
+  flex: 1; /* Takes remaining space */
+  display: flex;
+  justify-content: center;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+}
+
+.search-bar input[type="text"] {
+  padding: 8px;
   border: none;
-  border-radius: 5px;
+  border-radius: 40px;
+}
+
+.search-bar button {
+  padding: 8px 16px;
+  margin-left: 5px;
+  background-color: #1d0bbe;
+  color: white;
+  border: none;
   cursor: pointer;
 }
 
-/* Disco Light Effect */
-body {
-  animation: discoLights 5s infinite;
+.search-bar button:hover {
+  background-color: #d41740;
 }
 
-@keyframes discoLights {
-  0% { background-color: #ff0000; }
-  25% { background-color: #ffff00; }
-  50% { background-color: #00ff00; }
-  75% { background-color: #0000ff; }
-  100% { background-color: #ff0000; }
+.nav-links {
+  list-style-type: none;
+  display: flex;
+  align-items: left; /* Align vertically */
+  margin-top : 10px; 
+  background-color:  #333;
 }
 
-/* Footer Styling */
-footer {
-  background-color: #26272C;
-  color: #fff;
+
+.nav-links li a {
+  color: rgb(20, 155, 209);
+  text-decoration: none;
+  padding: 10px 15px;
+  margin-left: 0px;
+  margin-right: 2px;
+}
+
+.nav-links li a.active {
+  background-color: #181a96;
+  border-radius: 4px;
+}
+
+.nav-links li a:hover {
+  background-color: #555;
+  border-radius: 4px;
+}
+.footer {
+  background-color: #333;
+}
+.footer-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0px 0px 0px;
+  background-color: #333;
+  color: rgb(15, 141, 64);
+  text-align: left;
+  margin: 0px 40vh 0px 40vh;
+ 
+
+}
+
+.footer-column {
+  flex: 1;
+  margin-right: 20px;
+
+}
+.footer-column a{
+  color: #fcfcfc;
+  justify-content:left;
+}
+.contact-column {
   text-align: center;
-  padding: 10px;
-  position: fixed; /* Fixed footer */
-  bottom: 0;
-  width: 100%;
 }
 
-/* Error Message Styling */
-.error-message {
-  color: red;
-  font-size: 14px;
-  margin-top: 5px;
-}
-
-/* Responsive Design (Example) */
-@media (max-width: 768px) {
-  .sidebar {
-      width: 100%;
-      height: auto;
-      position: static; 
-  }
-
-  .main-content {
-      margin-left: 0;
-  }
+.copyright {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 32px;
 }
